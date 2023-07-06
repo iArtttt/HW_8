@@ -18,10 +18,16 @@ namespace HW_8
               new Director {Name="Jonathan Demme", Country="USA"},
               new Director {Name="Roger Donaldson", Country="New Zealand"},
             };
-            //var h = films.Aggregate((n, d) => new Film { Name = n.Name + ", " + d.Name, Director = n.Director + " " + d.Director });
+
+            List<string> strings = new List<string>() { "I", "like", "play", "board", "games", "!" };
             
+            Console.WriteLine(strings.Aggregate((f, s) => f +=" " + s));
+            
+            Console.WriteLine(strings.Take(3).Aggregate((f, s) => f += " " + s) + " " + strings.Skip(3).Aggregate((f, s) => f += " " + s));
+            
+
             Console.WriteLine(string.Join("\n",
-                films.Select((n) => "Film: " + n.Name + ", Director: " + n.Director + " from " + 
+                films.Select((n) => "Film: " + n.Name + ", Director: " + n.Director + " From " + 
                 directors.Where(d => d.Name == n.Director ).Select(d => d.Country).FirstOrDefault()).ToArray()));
             
             Console.WriteLine(string.Join("", directors.Select(s => s.Name)
